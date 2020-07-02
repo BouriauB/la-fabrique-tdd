@@ -2,3 +2,4 @@
 #---jetbrains
 #-----------------------------
 .idea/*
+node_modules
