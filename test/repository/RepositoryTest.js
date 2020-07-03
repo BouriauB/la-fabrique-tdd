@@ -3,4 +3,8 @@ const Repository = require('../../src/repository/Repository');
 
 describe('Repository', () => {
 
+    describe('#storeImage', () =>  {
+
+    });
+
 });
