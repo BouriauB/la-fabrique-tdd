@@ -1,6 +1,6 @@
 module.exports = class CategoryRepository {
     constructor() {
-        this.array = [];  //expected_array = [ { 1, "billard" }, { 2, "baby-foot" } ]
+        this._array = [];  //expected_array = [ { 1, "billard" }, { 2, "baby-foot" } ]
     }
 
     create(id, value){
@@ -19,7 +19,7 @@ module.exports = class CategoryRepository {
         return null;
     }
 
-    all(){
+    getAll(){
         return null;
     }
 
