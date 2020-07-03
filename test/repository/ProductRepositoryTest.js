@@ -19,11 +19,27 @@ describe('ProductRepository', () => {
 
     describe('#getAll', () => {
         it("should return empty list", () => {
+            //Arrange
+            const productRepository = new ProductRepository;
+            //Act
+            const result = productRepository.getAll();
 
+            //Assert
+            assert.equal(JSON.stringify(result), JSON.stringify({}));
         });
 
         it("should not return empty list (with 2 entries)'", () => {
+            //Arrange
+            const productRepository = new ProductRepository;
 
+            productRepository.create('1', 'billard');
+            productRepository.create('2', 'flipper');
+
+            //Act
+            const result = productRepository.getAll();
+
+            //Assert
+            assert.equal(Object.keys(result).length, 2);
         });
     });
 
@@ -70,7 +86,7 @@ describe('ProductRepository', () => {
             // Assert
         });
 
-        it('should used default value {images} if she is not defined', () => {
+        it('should used default value {image} if she is not defined', () => {
             // Arrange
             // Act
             // Assert
