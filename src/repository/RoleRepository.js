@@ -1,10 +1,10 @@
-module.exports = class CategoryController {
+module.exports = class RoleRepository {
 
-    save(value){
+    create(value){
         return null;
     }
 
-    getByIndex(index){
+    getById(id){
         return null;
     }
 

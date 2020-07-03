@@ -3,4 +3,8 @@ const AuthenticationController = require('../../src/controller/AuthenticationCon
 
 describe('AuthenticationController', () => {
 
+    describe('#index', () => {
+
+    });
+
 });
