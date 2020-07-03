@@ -4,22 +4,23 @@ const CategoryRepository = require('../../src/repository/CategoryRepository');
 describe('CategoryRepository', () => {
     beforeEach(() => {
         categoryRepository = new CategoryRepository();
+        let result = false;
     });
     describe('#create', () => {
-        it("new object is add", () => {
+        it("Should create category", () => {
             //arrange
-            const expected_name = "pepito";
+            const expectedName = "billard";
             //act
-            categoryRepository.create(1, "pepito");
+            categoryRepository.create(1, "billard");
             let category = categoryRepository.getById(1);
             //assert
-            assert.equal(category.name, expected_name);
+            assert.equal(category.name, expectedName);
         });
 
-        it("new object has not been add no key", () => {
+        it("Should raise error when create category with no key", () => {
             //act
             try {
-                categoryRepository.create(undefined, "pepito");
+                categoryRepository.create(undefined, "billard");
             } catch (e){
                 res = true
             }
@@ -27,117 +28,121 @@ describe('CategoryRepository', () => {
             assert.throws(categoryRepository.create);
         });
 
-        it("new object has not been add no value", () => {
+        it("Should raise error when create category with no value", () => {
             //act
             try {
                 categoryRepository.create(1, undefined);
             } catch (e){
-                res = true
+                result = true
             }
             //assert
-            assert.throws(categoryRepository.create);
+            assert.equal(result, true);
         });
     });
 
     describe('#update', () => {
-        it("update object", () => {
+        it("Should update name of category", () => {
             //arrange
-            const expected_name = "topito";
-            categoryRepository.create(1, "pepito");
-            let category_created = categoryRepository.getById(1);
+            const expectedName = "billard";
+            categoryRepository.create(1, "baby-foot");
+            let categoryCreated = categoryRepository.getById(1);
             //act
-            categoryRepository.update(category_created.id, "topito");
-            let category_updated = categoryRepository.getById(1);
+            categoryRepository.update(categoryCreated.id, "billard");
+            let categoryUpdated = categoryRepository.getById(1);
             //assert
-            assert.equal(category_updated.name, expected_name);
+            assert.equal(categoryUpdated.name, expectedName);
         });
 
-        it("update object has no value", () => {
+        it("Should raise error when update category with no value", () => {
+            //arrange
             //act
-            categoryRepository.create(1, "pepito");
-            let category_created = categoryRepository.getById(1);
+            categoryRepository.create(1, "billard");
+            let categoryCreated = categoryRepository.getById(1);
             try {
-                categoryRepository.update(category_created.id, undefined);
+                categoryRepository.update(categoryCreated.id, undefined);
             } catch (e){
-                res = true
+                result = true;
             }
             //assert
-            assert.throws(categoryRepository.update);
+            assert.equal(result, true);
         });
     });
 
     describe('#delete', () => {
-        it("delete object", () => {
+        it("delete category", () => {
             //arrange
-            categoryRepository.create(1, "pepito");
+            categoryRepository.create(1, "billard");
             //act
             categoryRepository.delete(1);
             try {
                 categoryRepository.getById(1);
             } catch (e){
-                res = true
+                result = true;
             }
             //assert
-            assert.throws(categoryRepository.getById);
+            assert.equal(result, true);
         });
-        it("delete object but object not exist", () => {
+        it("Should raise error when delete category but category not exist", () => {
+            //arrange
             //act
             try {
                 categoryRepository.delete(1);
             } catch (e){
-                res = true
+                result = true;
             }
             //assert
-            assert.throws(categoryRepository.delete);
+            assert.equal(result, true);
         });
-        it("delete object but id in param", () => {
+        it("Should raise error when delete category but no id in param", () => {
+            //arrange
             //act
             try {
                 categoryRepository.delete(undefined);
             } catch (e){
-                res = true
+                result = true;
             }
             //assert
-            assert.throws(categoryRepository.delete);
+            assert.equal(result, true);
         });
     });
 
     describe('#getById', () => {
-        it("get object added but no id", () => {
+        it("Should raise error when getByID with no id ", () => {
             //arrange
-            categoryRepository.create(1, "pepito");
+            categoryRepository.create(1, "billard");
             //act
             try {
                 categoryRepository.getById();
             } catch (e){
-                res = true
+                result = true;
             }
             //assert
-            assert.throws(categoryRepository.create);
+            assert.equal(result, true);
         });
     });
 
     describe('#getAll', () => {
-        it("return empty list", () => {
+        it("Should return empty list", () => {
             //arrange
-            const expected_data = [];
-            let result = null;
+            const expectedData = [];
+            let categoryList = null;
             //act
-            result = categoryRepository.all()
+            categoryList = categoryRepository.getAll()
             //assert
-            assert.equal(JSON.stringify(result), JSON.stringify(expected_data))
+            assert.equal(JSON.stringify(categoryList), JSON.stringify(expectedData))
         });
 
-        it("return fill list", () => {
+        it("Should return fill list", () => {
             //arrange
-            const expected_data = [{1: 'baby-foot'}, {2: 'billard'}];
-            let result = null;
+            const expectedData = [{1: 'baby-foot'}, {2: 'billard'}];
+            let categoryList = null;
+            categoryRepository.create(1, "baby-foot");
+            categoryRepository.create(2, "billard");
             //act
-            result = categoryRepository.all()
+            categoryList = categoryRepository.getAll()
             //assert
-            assert.equal(JSON.stringify(result), JSON.stringify(expected_data))
-            assert.equal(JSON.stringify(result).length, JSON.stringify(expected_data).length)
+            assert.equal(JSON.stringify(categoryList), JSON.stringify(expectedData))
+            assert.equal(Object.keys(categoryList).length, 2)
         });
     });
-
 });
