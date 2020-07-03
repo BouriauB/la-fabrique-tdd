@@ -1,8 +1,6 @@
 module.exports = class RoleRepository {
 
-    create(key,value){
-        return null ;
-    }
+    create(key,value){ }
 
     getById(id){
         return null;
