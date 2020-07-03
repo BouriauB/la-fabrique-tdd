@@ -258,25 +258,6 @@ describe('ProductRepository', () => {
     });
 
     describe('#update', () => {
-        // it('should return updated product (Nominal case)', () => {
-        //     //Arrange
-        //     product.create(1, {
-        //         name: 'billard',
-        //         description: 'Lorem ipsum dolor sit amet orci aliquam.',
-        //         prize: 499.99,
-        //         categoryId: 1,
-        //         image: 'billard.jpg',
-        //         userId: 1
-        //     });
-        //
-        //     //Act
-        //     product.update(1, {});
-        //     const result = product.getById('1');
-        //
-        //     //Assert
-        //     assert.equal(result.name, 'billard');
-        // });
-
         it('should raise error if the id is not defined', () => {
             //Arrange
             let result = false;
