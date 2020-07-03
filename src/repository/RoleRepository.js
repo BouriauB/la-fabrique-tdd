@@ -3,12 +3,7 @@ module.exports = class RoleRepository {
         this.role = {}
     }
     create(key,value){ 
-
-        if(this.role === undefined){
-            this.role = {}
-            
-        }
-
+        
         this.role[key] = value
 
         if(key === undefined){
@@ -23,15 +18,11 @@ module.exports = class RoleRepository {
     }
 
     getById(id){
-        if(this.role === undefined){
-            this.role = {}
-            
-        }
         return this.role[id];
     }
 
     getAll(){
-       return null
+       return this.role
     }
 
     update(key,value){
@@ -46,10 +37,7 @@ module.exports = class RoleRepository {
             
         }
 
-        if(role === undefined){
-            throw new Error();
-            
-        }
+        
     }
 
     delete(key){
