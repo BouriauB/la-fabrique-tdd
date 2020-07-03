@@ -1,15 +1,16 @@
 module.exports = class ProductRepository {
 
-    create(value){
-        return null;
-    }
-
     getById(Id){
-        return null;
+        return 0;
     }
 
     getAll(){
         return null;
     }
 
+    create(key, value){ }
+
+    update(id){ }
+
+    delete(id){ }
 };
