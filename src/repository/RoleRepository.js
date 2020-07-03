@@ -1,18 +1,22 @@
 module.exports = class RoleRepository {
 
-    create(value){
-        return null;
+    create(key,value){
+        return null ;
     }
 
     getById(id){
         return null;
     }
 
-    getAll(){
+    getAll(id){
         return null;
     }
 
-    update(value){
+    update(key,value){
+        return null;
+    }
+
+    delete(key){
         return null;
     }
 
