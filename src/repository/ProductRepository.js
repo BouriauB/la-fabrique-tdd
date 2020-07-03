@@ -1,10 +1,10 @@
-module.exports = class UserController {
+module.exports = class ProductRepository {
 
-    save(value){
+    create(value){
         return null;
     }
 
-    getByIndex(index){
+    getById(Id){
         return null;
     }
 

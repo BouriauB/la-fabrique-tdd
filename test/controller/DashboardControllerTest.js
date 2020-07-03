@@ -3,4 +3,8 @@ const DashboardController = require('../../src/controller/DashboardController');
 
 describe('DashboardController', () => {
 
+    describe('#index', () => {
+
+    });
+
 });
