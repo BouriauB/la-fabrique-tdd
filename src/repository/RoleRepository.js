@@ -12,4 +12,8 @@ module.exports = class RoleRepository {
         return null;
     }
 
+    update(value){
+        return null;
+    }
+
 };
