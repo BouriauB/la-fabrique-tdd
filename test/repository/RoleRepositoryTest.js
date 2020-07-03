@@ -58,9 +58,6 @@ describe('RoleRepository', () => {
     describe('#getAll', () => {
         it("Should return 2 roles",() => {
             //Arrange
-            roleRepository.create(1,'admin')
-            roleRepository.create(2,'moderator')
-    
             //Act
             let result = roleRepository.getAll()
 
