@@ -25,6 +25,34 @@ describe('RoleRepository', () => {
             assert.equal(result.role,'admin' )
         });
 
+        it("should raise error if the role does not exist",() => {
+         //Arrange 
+         let result = false;
+
+         //Act
+         try{
+
+         } catch(e) {
+             result = true;
+         }
+         //Assert
+         assert.equal(result,true);
+     });
+
+        it("should raise error if the role is not defined",() => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.create();
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
+
     });
 
     describe('#getAll', () => {
@@ -39,6 +67,25 @@ describe('RoleRepository', () => {
             //Assert
             assert.equal(Object.keys(result).length,2)
         });
+
+        it("should raise error if one role is not defined",() => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.create(1,{
+                    role: 'admin'
+                    
+                }
+                );
+                roleRepository.create();
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
     });
 
     describe('#create', () => {
@@ -52,15 +99,63 @@ describe('RoleRepository', () => {
             let result = roleRepository.getById(2);
 
             //Assert
-            assert.equal(result, 'moderator');
+            assert.equal(result.role, 'moderator');
+        });
+
+        it('should raise error if the value{role} is not defined', () => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.create(1,{
+                    role: undefined
+                });
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
+
+        it('should raise error if the key is not defined', () => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.create();
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
+
+        it('should raise error if the value is not defined', () => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.create(1);
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
         });
     });
 
     describe('#update', () => {
         it("Should uptape a role", () => {
             //Arrange
-            roleRepository.update(1,{
+            roleRepository.create(1,{
                 role:'admin'
+            });
+            
+            roleRepository.update(1,{
+                role:'moderator'
             });
 
             //Act
@@ -69,11 +164,59 @@ describe('RoleRepository', () => {
             //Assert
             assert.equal(result.role, 'admin');
         });
+
+        it('should raise error if the value{role} is not defined', () => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.update(1,{
+                    role: undefined
+                });
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
+
+        it('should raise error if the key is not defined', () => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.update();
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
+
+        it('should raise error if the value is not defined', () => {
+            //Arrange 
+            let result = false;
+
+            //Act
+            try{
+                roleRepository.update(1);
+            } catch(e) {
+                result = true;
+            }
+            //Assert
+            assert.equal(result,true);
+        });
     });
 
     describe('#remove', () => {
         it("Should remove a role", () => {
             //Arrange
+            roleRepository.create(2,{
+                role:'moderator'
+            });
+            
             roleRepository.delete(2,{
                 role:'moderator'
             });
@@ -82,7 +225,7 @@ describe('RoleRepository', () => {
             let result = roleRepository.getById(2);
 
             //Assert
-            assert.equal(result, 'mmodetor');
+            assert.equal(result.role, 'moderator');
         });
 
     });
