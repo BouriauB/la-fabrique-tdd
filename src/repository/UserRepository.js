@@ -1,6 +1,6 @@
 module.exports = class UserRepository {
 
-    create(value){
+    create(id, firstname, lastname, email, password, roleId){
         return null;
     }
 
