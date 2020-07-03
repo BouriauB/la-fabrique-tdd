@@ -25,7 +25,7 @@ describe('RoleRepository', () => {
             assert.equal(result.role,'admin' )
         });
 
-        it("should raise error if the role does not exist",() => {
+        it("Should raise error if the role does not exist",() => {
          //Arrange 
          let result = false;
 
@@ -39,7 +39,7 @@ describe('RoleRepository', () => {
          assert.equal(result,true);
      });
 
-        it("should raise error if the role is not defined",() => {
+        it("Should raise error if the role is not defined",() => {
             //Arrange 
             let result = false;
 
@@ -68,7 +68,7 @@ describe('RoleRepository', () => {
             assert.equal(Object.keys(result).length,2)
         });
 
-        it("should raise error if one role is not defined",() => {
+        it("Should raise error if one role is not defined",() => {
             //Arrange 
             let result = false;
 
@@ -102,7 +102,7 @@ describe('RoleRepository', () => {
             assert.equal(result.role, 'moderator');
         });
 
-        it('should raise error if the value{role} is not defined', () => {
+        it("Should raise error if the value{role} is not defined", () => {
             //Arrange 
             let result = false;
 
@@ -118,7 +118,7 @@ describe('RoleRepository', () => {
             assert.equal(result,true);
         });
 
-        it('should raise error if the key is not defined', () => {
+        it("Should raise error if the key is not defined", () => {
             //Arrange 
             let result = false;
 
@@ -132,7 +132,7 @@ describe('RoleRepository', () => {
             assert.equal(result,true);
         });
 
-        it('should raise error if the value is not defined', () => {
+        it("Should raise error if the value is not defined", () => {
             //Arrange 
             let result = false;
 
@@ -165,7 +165,7 @@ describe('RoleRepository', () => {
             assert.equal(result.role, 'admin');
         });
 
-        it('should raise error if the value{role} is not defined', () => {
+        it("Should raise error if the value{role} is not defined", () => {
             //Arrange 
             let result = false;
 
@@ -181,7 +181,7 @@ describe('RoleRepository', () => {
             assert.equal(result,true);
         });
 
-        it('should raise error if the key is not defined', () => {
+        it("Should raise error if the key is not defined", () => {
             //Arrange 
             let result = false;
 
@@ -195,7 +195,7 @@ describe('RoleRepository', () => {
             assert.equal(result,true);
         });
 
-        it('should raise error if the value is not defined', () => {
+        it("Should raise error if the value is not defined", () => {
             //Arrange 
             let result = false;
 
