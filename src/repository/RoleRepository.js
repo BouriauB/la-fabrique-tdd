@@ -1,17 +1,55 @@
 module.exports = class RoleRepository {
+    constructor () {
+        this.role = {}
+    }
+    create(key,value){ 
 
-    create(key,value){ }
+        if(this.role === undefined){
+            this.role = {}
+            
+        }
 
-    getById(id){
-        return null;
+        this.role[key] = value
+
+        if(key === undefined){
+            throw new Error();
+            
+        }
+
+        if(value === undefined){
+            throw new Error();
+            
+        }
     }
 
-    getAll(id){
-        return null;
+    getById(id){
+        if(this.role === undefined){
+            this.role = {}
+            
+        }
+        return this.role[id];
+    }
+
+    getAll(){
+       return null
     }
 
     update(key,value){
-        return null;
+        
+        if(key === undefined){
+            throw new Error();
+            
+        }
+
+        if(value === undefined){
+            throw new Error();
+            
+        }
+
+        if(role === undefined){
+            throw new Error();
+            
+        }
     }
 
     delete(key){

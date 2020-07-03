@@ -25,7 +25,7 @@ describe('RoleRepository', () => {
             assert.equal(result.role,'admin' )
         });
 
-        it("Should raise error if the role does not exist",() => {
+        it("Should raise error if the value{role} does not exist",() => {
          //Arrange 
          let result = false;
 
@@ -65,7 +65,7 @@ describe('RoleRepository', () => {
             let result = roleRepository.getAll()
 
             //Assert
-            assert.equal(Object.keys(result).length,2)
+            assert.equal(JSON.stringify(result), JSON.stringify({}))
         });
 
         it("Should raise error if one role is not defined",() => {
