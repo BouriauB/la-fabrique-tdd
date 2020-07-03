@@ -7,35 +7,34 @@ describe('RoleRepository', () => {
 
     beforeEach(() => {
         //Arrange
-        role = new RoleRepository
+        roleRepository = new RoleRepository
     })
    
 
     describe('#getById', () => {
-        it("Should have role",() => {
+        it("Should return role",() => {
             //Arrange
-
-            role.create('1','visiteur')
-            role.create('2','admin')
+            roleRepository.create(1,{
+                role:'admin'
+            });
 
             //Act
-                const result = role.getById()
+            let result = roleRepository.getById(1)
 
             //Assert
-            assert.equal(Object.keys(result).length,2)
+            assert.equal(result.role,'admin' )
         });
 
     });
 
     describe('#getAll', () => {
-        it("Should have 2 roles",() => {
+        it("Should return 2 roles",() => {
             //Arrange
+            roleRepository.create(1,'admin')
+            roleRepository.create(2,'moderator')
     
-            role.create('1','visiteur')
-            role.create('2','admin')
-
             //Act
-                const result = role.getAll()
+            let result = roleRepository.getAll()
 
             //Assert
             assert.equal(Object.keys(result).length,2)
@@ -45,28 +44,46 @@ describe('RoleRepository', () => {
     describe('#create', () => {
         it("Should return new role", () => {
             //Arrange
-            role.create('3', {
-                role: "modérateur"});
+            roleRepository.create(2,{
+                role:'moderator'
+            });
+
             //Act
-            const result = role.getById('3');
+            let result = roleRepository.getById(2);
+
             //Assert
-            assert.equal(result, 'modérateur');
+            assert.equal(result, 'moderator');
         });
     });
 
     describe('#update', () => {
         it("Should uptape a role", () => {
             //Arrange
-            role.update('3', {
-                role: "modérateur"});
+            roleRepository.update(1,{
+                role:'admin'
+            });
+
             //Act
-            const result = role.getById('3');
+            let result = roleRepository.getById(1);
+
             //Assert
-            assert.equal(result, 'modérateur');
+            assert.equal(result.role, 'admin');
         });
     });
 
     describe('#remove', () => {
+        it("Should remove a role", () => {
+            //Arrange
+            roleRepository.delete(2,{
+                role:'moderator'
+            });
+
+            //Act
+            let result = roleRepository.getById(2);
+
+            //Assert
+            assert.equal(result, 'mmodetor');
+        });
 
     });
 
