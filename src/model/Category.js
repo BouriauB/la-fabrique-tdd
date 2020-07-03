@@ -1,15 +1,14 @@
 module.exports = class Category {
 
-    save(value){
-        return null;
+    constructor(name) {
+        this._name = name;
     }
 
-    getByIndex(index){
-        return null;
-    }
+    _getName(){
+      return this._name;
+    };
 
-    getAll(){
-        return null;
-    }
-
+    _setName(name){
+        this._name = name;
+    };
 };
