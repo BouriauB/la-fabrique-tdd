@@ -22,10 +22,10 @@ describe('CategoryRepository', () => {
             try {
                 categoryRepository.create(undefined, "billard");
             } catch (e){
-                res = true
+                result = true;
             }
             //assert
-            assert.throws(categoryRepository.create);
+            assert.equal(result, true);
         });
 
         it("Should raise error when create category with no value", () => {
@@ -33,7 +33,7 @@ describe('CategoryRepository', () => {
             try {
                 categoryRepository.create(1, undefined);
             } catch (e){
-                result = true
+                result = true;
             }
             //assert
             assert.equal(result, true);
@@ -47,7 +47,7 @@ describe('CategoryRepository', () => {
             categoryRepository.create(1, "baby-foot");
             let categoryCreated = categoryRepository.getById(1);
             //act
-            categoryRepository.update(categoryCreated.id, "billard");
+            categoryRepository.update(categoryCreated['id'], "billard");
             let categoryUpdated = categoryRepository.getById(1);
             //assert
             assert.equal(categoryUpdated.name, expectedName);
@@ -134,7 +134,7 @@ describe('CategoryRepository', () => {
 
         it("Should return fill list", () => {
             //arrange
-            const expectedData = [{1: 'baby-foot'}, {2: 'billard'}];
+            const expectedData = [{'id': 1, 'name': 'baby-foot'}, {'id': 2, 'name': 'billard'}];
             let categoryList = null;
             categoryRepository.create(1, "baby-foot");
             categoryRepository.create(2, "billard");
